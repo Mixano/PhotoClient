@@ -8,7 +8,10 @@ namespace DataModel
     {
 
         int id;
-        public int Id { get { return id; } set
+        public int Id
+        {
+            get { return id; }
+            set
             {
                 id = value;
                 OnPropertyChanged();

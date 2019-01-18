@@ -14,20 +14,23 @@ namespace DataModel
     
     public class PhotoLoader
     {       
-        public static string adress = "http://localhost:5000";
+        public static string adress = "http://10.0.2.2:5000";
         #region Data
         public static ObservableCollection<Photo> GetPhoto() 
         {
              HttpClient client = new HttpClient();
              client.BaseAddress = new Uri(adress);
-             var json = client.GetStringAsync($"/api/photos");
-             ObservableCollection<Photo> photos = JsonConvert.DeserializeObject<ObservableCollection<Photo>>(json.Result);
+             var json = client.GetStringAsync($"/api/photos").Result;
+
+             ObservableCollection<Photo> photos = JsonConvert.DeserializeObject<ObservableCollection<Photo>>(json);
            
              return photos;
         }
 
+
         public async static Task<bool> AddPhoto(Photo photo)
         {
+
 
 
             HttpClient client = new HttpClient();
