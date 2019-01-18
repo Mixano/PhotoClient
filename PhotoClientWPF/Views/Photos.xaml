@@ -1,0 +1,41 @@
+﻿<Page x:Class="PhotoClientWPF.Views.Photos"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PhotoClientWPF.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="670"
+      
+      Title="PhotoClient"
+      >
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="55"/>
+
+        </Grid.RowDefinitions>
+        <ItemsControl ItemsSource="{Binding Photos}" x:Name="lbClients" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Margin="4" BorderBrush="Gray" BorderThickness="1">
+                        <DockPanel>
+                            <Button  Content="Delete" Command="{Binding ElementName=lbClients, Path=DataContext.Remove}" CommandParameter="{Binding .}" DockPanel.Dock="Bottom"/>
+                            <TextBlock Text="{Binding Path=AddedDate}" Margin="3" DockPanel.Dock="Bottom"/>
+                            <Image MaxHeight="200" MaxWidth="200" Source="{Binding Path=ClientPhoto}" Margin="3"/>
+                        </DockPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <StackPanel  Grid.Row="1">
+            <Button Height="55"  Content="Add" Command="{Binding Add}" />
+        </StackPanel>
+    </Grid>
+</Page>
