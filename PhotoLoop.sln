@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoClientWPF", "PhotoClie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoClientMobile.Android", "PhotoClientMobile\PhotoClientMobile.Android\PhotoClientMobile.Android.csproj", "{64EF82B5-4ED3-4616-87BD-B85847C9EB20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoClientMobile", "PhotoClientMobile\PhotoClientMobile\PhotoClientMobile.csproj", "{F4720D34-9439-4878-8FF7-341AE780D144}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoClientMobile", "PhotoClientMobile\PhotoClientMobile\PhotoClientMobile.csproj", "{F4720D34-9439-4878-8FF7-341AE780D144}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

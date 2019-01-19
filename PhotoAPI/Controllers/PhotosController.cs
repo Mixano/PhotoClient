@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DataModel;
-using TreasureServer.DataBase;
+using PhotoAPI.DataBase;
 
-namespace TreasureServer.Controllers
+namespace PhotoAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -94,7 +94,7 @@ namespace TreasureServer.Controllers
             _context.Photos.Add(photo);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPhoto", new { id = photo.Id }, photo);
+            return new OkObjectResult(photo.Id);// CreatedAtAction("GetPhoto", new { id = photo.Id }, photo);
         }
 
         // DELETE: api/Photos/5

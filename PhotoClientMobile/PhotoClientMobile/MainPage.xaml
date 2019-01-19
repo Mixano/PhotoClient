@@ -12,21 +12,28 @@
             <RowDefinition Height="auto"/>
 
         </Grid.RowDefinitions>
-        <ListView ItemsSource="{Binding Photos}" x:Name="lbClients" HasUnevenRows="True" >
+        <ListView ItemsSource="{Binding Photos}" x:Name="lbClients" HasUnevenRows="True" SelectedItem="{Binding SelectedPhoto}" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
-                            <Button  Text="Delete" Command="{Binding Remove}" />
+                            
                             <Label Text="{Binding AddedDate}" />
                             <Image  Source="{Binding ClientPhoto, Converter={StaticResource converter}}" HeightRequest="200" WidthRequest="200"/>
+                            
+                            
                         </StackLayout>
+                        
                     </ViewCell>
+                    
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         <StackLayout  Grid.Row="1">
+            
             <Button   Text="Add" Command="{Binding Add}" />
+            <Button  Text="Delete" Command="{Binding Path=Remove}" CommandParameter="{Binding SelectedPhoto}"/>
+            
         </StackLayout>
     </Grid>
 

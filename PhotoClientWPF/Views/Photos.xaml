@@ -26,9 +26,9 @@
                 <DataTemplate>
                     <Border Margin="4" BorderBrush="Gray" BorderThickness="1">
                         <DockPanel>
-                            <Button  Content="Delete" Command="{Binding ElementName=lbClients, Path=DataContext.Remove}" CommandParameter="{Binding .}" DockPanel.Dock="Bottom"/>
-                            <TextBlock Text="{Binding Path=AddedDate}" Margin="3" DockPanel.Dock="Bottom"/>
-                            <Image MaxHeight="200" MaxWidth="200" Source="{Binding Path=ClientPhoto}" Margin="3"/>
+                            <Button Content="Delete" Command="{Binding ElementName=lbClients, Path=DataContext.Remove}" CommandParameter="{Binding .}" DockPanel.Dock="Bottom"/>
+                            <TextBlock Text="{Binding Path=AddedDate, UpdateSourceTrigger=PropertyChanged}" Margin="3" DockPanel.Dock="Bottom"/>
+                            <Image MaxHeight="200" MaxWidth="200" Source="{Binding Path=ClientPhoto, UpdateSourceTrigger=PropertyChanged}" Margin="3"/>
                         </DockPanel>
                     </Border>
                 </DataTemplate>

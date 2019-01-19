@@ -14,7 +14,7 @@ namespace DataModel
     
     public class PhotoLoader
     {       
-        public static string adress = "http://10.0.2.2:5000";
+        public static string adress = "http://10.0.2.2:5000"; ///10.0.2.2:5000 //127.0.0.1:5000
         #region Data
         public static ObservableCollection<Photo> GetPhoto() 
         {
@@ -41,13 +41,13 @@ namespace DataModel
             return response.IsSuccessStatusCode;
         }
 
-        public static bool DeletePhoto(int id)
+        public static bool DeletePhoto(Photo photo)
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(adress);
-            var response = client.DeleteAsync($"/api/photos/{id}").Result;
+            var response = client.DeleteAsync($"/api/photos/{photo.Id}").Result;
 
-            return response.IsSuccessStatusCode;
+            return response.IsSuccessStatusCode; //пойманное значение id
         }
         #endregion
       

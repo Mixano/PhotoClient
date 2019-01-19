@@ -28,6 +28,14 @@ namespace PhotoClientMobile
 
         public ICommand Add { get; private set; }
         public ICommand Remove { get; private set; }
+        private Photo selectedPhoto;
+        private int lastId;
+
+        public Photo SelectedPhoto
+        {
+            get { return selectedPhoto; }
+            set { selectedPhoto = value; OnPropertyChanged(); }
+        }
 
         public ObservableCollection<Photo> Photos
         {
@@ -38,6 +46,7 @@ namespace PhotoClientMobile
             set
             {
                 photos = value;
+                lastId = photos[photos.Count - 1].Id;
                 OnPropertyChanged("photos");
 
             }
@@ -66,11 +75,12 @@ namespace PhotoClientMobile
                     photopath = photo.Path;
                                        
                  }
-               
+
 
 
                 Photo c = new Photo()
                 {
+                    Id = ++lastId,
                     AddedDate = DateTime.Now,
                     ClientPhoto = File.ReadAllBytes(photopath)
                 };
@@ -83,9 +93,8 @@ namespace PhotoClientMobile
 
         void DeletePhoto(object obj)
         {
-            //   var selectedPhoto = CollectionViewSource.GetDefaultView(photos).CurrentItem as Photo;
             Photos.Remove(obj as Photo);
-            PhotoLoader.DeletePhoto((obj as Photo).Id);
+            PhotoLoader.DeletePhoto(obj as Photo);
         }
 
 

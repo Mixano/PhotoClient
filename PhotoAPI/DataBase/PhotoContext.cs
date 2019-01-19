@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 
 
-namespace TreasureServer.DataBase
+namespace PhotoAPI.DataBase
 {
     public class PhotoContext : DbContext
     {
