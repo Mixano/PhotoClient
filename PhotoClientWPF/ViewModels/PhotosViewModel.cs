@@ -21,6 +21,7 @@ namespace PhotoClientWPF.ViewModels
     {
         ObservableCollection<Photo> photos;
 
+        private int lastId;
         
         public ICommand Add { get; private set; }
         public ICommand Remove { get; private set; }
@@ -34,6 +35,7 @@ namespace PhotoClientWPF.ViewModels
             set
             {
                 photos = value;
+                lastId = photos.Count == 0 ? 0 : photos[photos.Count - 1].Id;
                 OnPropertyChanged("photos");
 
             }
@@ -57,6 +59,7 @@ namespace PhotoClientWPF.ViewModels
                 var path = openFileDialog.FileName;
                 Photo c = new Photo()
                 {
+                    Id = ++lastId,
                     AddedDate = DateTime.Now,
                     ClientPhoto = File.ReadAllBytes(path)
                 };
@@ -71,7 +74,7 @@ namespace PhotoClientWPF.ViewModels
         {
          //   var selectedPhoto = CollectionViewSource.GetDefaultView(photos).CurrentItem as Photo;
             Photos.Remove(obj as Photo);
-            PhotoLoader.DeletePhoto((obj as Photo).Id);
+            PhotoLoader.DeletePhoto(obj as Photo);
         }
            
 

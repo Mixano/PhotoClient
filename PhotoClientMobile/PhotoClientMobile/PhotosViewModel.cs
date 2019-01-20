@@ -46,7 +46,7 @@ namespace PhotoClientMobile
             set
             {
                 photos = value;
-                lastId = photos[photos.Count - 1].Id;
+                lastId = photos.Count == 0 ? 0 : photos[photos.Count - 1].Id;
                 OnPropertyChanged("photos");
 
             }
